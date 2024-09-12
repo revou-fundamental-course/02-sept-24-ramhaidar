@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katik - Geometry Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>Welcome to Katik</h1>
+        <p>Hai Sobat, Selamat datang di Katik :)<br>
+           Sebuah web apps sederhana yang berfungsi untuk menghitung nilai luas dan keliling bangun datar
+        </p>
+        <div class="navigation">
+            <button class="nav-button" onclick="toggleSection('segitigaSubButtons')">Segitiga</button>
+            <div id="segitigaSubButtons" class="sub-buttons" style="display: none;">
+                <button class="sub-button" onclick="showSection('bagianLuasSegitiga')">Luas</button>
+                <button class="sub-button" onclick="showSection('bagianKelilingSegitiga')">Keliling</button>
+            </div>
+            <button class="nav-button" onclick="toggleSection('jajarSubButtons')">Jajar Genjang</button>
+            <div id="jajarSubButtons" class="sub-buttons" style="display: none;">
+                <button class="sub-button" onclick="showSection('bagianLuasJajarGenjang')">Luas</button>
+                <button class="sub-button" onclick="showSection('bagianKelilingJajarGenjang')">Keliling</button>
+            </div>
+        </div>
+    </header>
+
+    <section id="bagianLuasSegitiga" class="bagian-kalkulasi" style="display: none;">
+        <h2>Luas Segitiga</h2>
+        <img src="Segitiga.png" class="diagram">
+        <p>Rumus Luas Segitiga yaitu :<br>
+           L = 1/2 x a x t
+        </p>
+        <p>Di mana :<br>
+           L = Luas<br>
+           a = Panjang Alas<br>
+           t = Tinggi
+        </p>
+
+        <form id="formLuasSegitiga">
+            <label for="alas_segitiga">Panjang Alas (a):</label>
+            <input type="number" id="alas_segitiga" placeholder="Panjang Alas" min="0">
+            
+            <label for="tinggi_segitiga">Tinggi (t):</label>
+            <input type="number" id="tinggi_segitiga" placeholder="Tinggi" min="0">
+            
+            <div id="hasilLuasSegitiga" class="result"></div>
+            
+            <button type="button" class="tombol-hitung" onclick="calculateTriangleArea()">Hitung</button>
+            <button type="reset" class="tombol-reset" onclick="clearResults()">Reset</button>
+        </form>
+    </section>
+
+    <section id="bagianKelilingSegitiga" class="bagian-kalkulasi" style="display: none;">
+        <h2>Keliling Segitiga</h2>
+        <img src="Segitiga.png" class="diagram">
+        <p>Rumus Keliling Segitiga yaitu :<br>
+           K = S1 + S2 + S3
+        </p>
+        <p>Di mana :<br>
+           K = Keliling<br>
+           S1 = Sisi A<br>
+           S2 = Sisi B<br>
+           S3 = Sisi C
+        </p>
+
+        <form id="formKelilingSegitiga">
+            <label for="sisi_satu">Sisi A (S1):</label>
+            <input type="number" id="sisi_satu" placeholder="Sisi A" min="0">
+            
+            <label for="sisi_dua">Sisi B (S2):</label>
+            <input type="number" id="sisi_dua" placeholder="Sisi B" min="0">
+            
+            <label for="sisi_tiga">Sisi C (S3):</label>
+            <input type="number" id="sisi_tiga" placeholder="Sisi C" min="0">
+            
+            <div id="hasilKelilingSegitiga" class="result"></div>
+            
+            <button type="button" class="tombol-hitung" onclick="calculateTrianglePerimeter()">Hitung</button>
+            <button type="reset" class="tombol-reset" onclick="clearResults()">Reset</button>
+        </form>
+    </section>
+
+    <section id="bagianLuasJajarGenjang" class="bagian-kalkulasi" style="display: none;">
+        <h2>Luas Jajar Genjang</h2>
+        <img src="JajarGenjang.png" class="diagram">
+        <p>Rumus Luas Jajar Genjang yaitu :<br>
+           L = a x t
+        </p>
+        <p>Di mana :<br>
+           L = Luas<br>
+           a = Panjang Alas<br>
+           t = Tinggi
+        </p>
+
+        <form id="formLuasJajarGenjang">
+            <label for="alasJajarGenjang1">Panjang Alas (a):</label>
+            <input type="number" id="alasJajarGenjang1" placeholder="Panjang Alas" min="0">
+            
+            <label for="tinggiJajarGenjang1">Tinggi (t):</label>
+            <input type="number" id="tinggiJajarGenjang1" placeholder="Tinggi" min="0">
+            
+            <div id="hasilLuasJajarGenjang" class="result"></div>
+            
+            <button type="button" class="tombol-hitung" onclick="calculateParallelogramArea()">Hitung</button>
+            <button type="reset" class="tombol-reset" onclick="clearResults()">Reset</button>
+        </form>
+    </section>
+
+    <section id="bagianKelilingJajarGenjang" class="bagian-kalkulasi" style="display: none;">
+        <h2>Keliling Jajar Genjang</h2>
+        <img src="JajarGenjang.png" class="diagram">
+        <p>Rumus Keliling Jajar Genjang yaitu :<br>
+           K = 2 x (a + b)
+        </p>
+        <p>Di mana :<br>
+           K = Keliling<br>
+           a = Panjang Alas<br>
+           b = Panjang Sisi Miring
+        </p>
+
+        <form id="formKelilingJajarGenjang">
+            <label for="alasJajarGenjang2">Panjang Alas (a):</label>
+            <input type="number" id="alasJajarGenjang2" placeholder="Panjang Alas" min="0">
+            
+            <label for="tinggiJajarGenjang2">Panjang Sisi Miring (b):</label>
+            <input type="number" id="tinggiJajarGenjang2" placeholder="Panjang Sisi Miring" min="0">
+            
+            <div id="hasilKelilingJajarGenjang" class="result"></div>
+            
+            <button type="button" class="tombol-hitung" onclick="calculateParallelogramPerimeter()">Hitung</button>
+            <button type="reset" class="tombol-reset" onclick="clearResults()">Reset</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 <a href="https://github.com/ramhaidar" style="text-decoration: none;">ramhaidar</a> All Rights Reserved</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
